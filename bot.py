@@ -185,7 +185,7 @@ async def donate(bot, message):
         return
         
     await message.reply_text(
-        text=C.DONATE + "Awww\no sweet of you. But I don't need any donation\nRadhe Radhe",
+        text=C.DONATE + "Awww........\nSo sweet of you. But I don't need any donation\nRadhe Radhe",
         reply_markup=InlineKeyboardMarkup([
             [ InlineKeyboardButton(text="DONATE", url=f"{donate_link}")]
         ])
