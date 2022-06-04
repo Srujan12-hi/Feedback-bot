@@ -59,7 +59,7 @@ owner_id=C.OWNER_ID
 
 LOG_TEXT = "Name: <a href='tg://user?id={}'>{}{}</a>\n\nStarted Meh."
 
-IF_TEXT = "<b>Message:\n\nName:</b> {}\n\n{}"
+IF_TEXT = "<b>A Message Arrived🔔\n\nName:</b> {}{}\n\n{}"
 
 IF_CONTENT = "<b>Message:\n\n<b>Name:</b> {}"
 
