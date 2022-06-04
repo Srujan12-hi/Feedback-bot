@@ -57,11 +57,11 @@ donate_link=C.DONATE_LINK
 
 owner_id=C.OWNER_ID
 
-LOG_TEXT = "ID: <code>{}</code>\nFirst Name: <a href='tg://user?id={}'>{}{}</a>\nDC ID: <code>{}</code>"
+LOG_TEXT = "Name: <a href='tg://user?id={}'>{}{}</a>\n\nStarted Meh."
 
-IF_TEXT = "<b>Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
+IF_TEXT = "<b>Message:\n\nName:</b> {}\n\n{}"
 
-IF_CONTENT = "<b>Message from:</b> {} \n<b>Name:</b> {}"
+IF_CONTENT = "<b>Message:\n\n<b>Name:</b> {}"
 
 # Callback
 @bot.on_callback_query()
@@ -78,7 +78,7 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
             # 
             await db.set_notif(user_id, notif=True)
         await cb.message.edit(
-            f"`Here You Can Set Your Settings:`\n\nSuccessfully setted notifications to **{await db.get_notif(user_id)}**",
+            f"`Here You Can Set Your Settings:`\n\nSuccessfully sett notifications to **{await db.get_notif(user_id)}**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -92,7 +92,7 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
             ),
         )
         await cb.answer(
-            f"Successfully setted notifications to {await db.get_notif(user_id)}"
+            f"Successfully set notifications to {await db.get_notif(user_id)}"
         )
         
         
@@ -110,7 +110,7 @@ async def start(bot, message):
         await db.add_user(chat_id)
         await bot.send_message(
             LOG_CHANNEL,
-            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+            f"#NEWUSER: \n\nNew User started Meh.",
         )
         return
       
@@ -145,7 +145,7 @@ async def help(bot, message):
         await db.add_user(chat_id)
         await bot.send_message(
             LOG_CHANNEL,
-            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+            f"#NEWUSER: \n\nNew User Started Meh.",
         )
     ban_status = await db.get_ban_status(chat_id)
     is_banned = ban_status['is_banned']
@@ -185,9 +185,9 @@ async def donate(bot, message):
         return
         
     await message.reply_text(
-        text=C.DONATE + "Awww........\nSo sweet of you. But I don't need any donation\nRadhe Radhe",
+        text="Awww........\nYou are very good person, but I don't need any donation\n\nRadhe Radhe",
         reply_markup=InlineKeyboardMarkup([
-            [ InlineKeyboardButton(text="DONATE", url=f"{donate_link}")]
+            [ InlineKeyboardButton(text="Join", url=f"https://t.me/Rk_Updates")]
         ])
     )
 
@@ -207,7 +207,7 @@ async def opensettings(bot, cmd):
         )
     try:
         await cmd.reply_text(
-            text=f"⚙ `Here You Can Set Your Settings:` ⚙\n\nSuccessfully setted notifications to **{await db.get_notif(user_id)}**",
+            text=f"⚙ `Here You Can Set Your Settings:` ⚙\n\nSuccessfully set notifications to **{await db.get_notif(user_id)}**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton(text=f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
